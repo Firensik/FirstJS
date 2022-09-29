@@ -6,22 +6,17 @@ const h1 = document.querySelector("h1")
 
 const input = document.querySelector('input');
 
-const advice = [];
+const advice = ['opcja1', 'opcja2'];
 
 
 const add = (e) => {
     e.preventDefault();
     const newAdvice = input.value;
     advice.push(newAdvice);
+    input.value = '';
+    alert(`dodales ${newAdvice}`)
+    input.value.textContent = "";
 
-    if (advice) {
-        input.value = '';
-        alert(`dodales ${newAdvice}`)
-        input.value.textContent = "";
-
-
-        return;
-    }
 
 
 }
@@ -35,13 +30,11 @@ btnShow.addEventListener('click', () => {
 
 
 })
-btnClean.addEventListener('click', () => {
-
+btnClean.addEventListener('click', (e) => {
+    e.preventDefault();
     advice.length = 0;
     input.value = '';
 })
 btnOptions.addEventListener('click', () => {
-    if (advice) {
-        alert(`Mozliwosci miales ${advice}`);
-    }
+    alert(advice.join(" --- ---"))
 })
